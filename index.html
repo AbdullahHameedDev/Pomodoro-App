@@ -4,10 +4,103 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pomodoro-app</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&family=Roboto+Slab:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Pomodoro Timer</title>
+	<link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+		<div class="pomodoro-app">
+			<div class="container">
+				<h2>pomodoro timer</h2>
+				<div class="pomodoro-app-cta">
+					<button class="pomodoro-app-cta-button active">pomodoro</button>
+					<button class="pomodoro-app-cta-button">short break</button>
+					<button class="pomodoro-app-cta-button">long break</button>
+				</div>
+				
+				<div class="pomodoro-app-timer">
+					<div class="pomodoro-app-inner">
+						<div class="pomodoro-app-wrapper">
+							<h1 class="pomodoro-app-heading">17:59</h1>
+							<p class="pomodoro-app-description">Pause</p>
+
+						</div>
+					</div>
+				</div>
+
+				<img class="pomodoro-app-settings-icon" src="src/assets/icon-settings.svg" alt="settings icon">
+
+				<div class="pomodoro-app-settings">
+					<div class="pomodoro-app-info">
+						<h3 class="pomodoro-app-info-heading">settings</h3>
+						<img class="pomodoro-app-settings-close" src="src/assets/icon-close-settings.svg" alt="icon to close ">
+					</div>
+
+					<div class="pomodoro-app-settings-container">
+						<h3 class="pomodoro-app-settings-inner-heading">TIME (MINUTES)</h3>
+	
+						<div class="pomodoro-app-settings-inner">
+							<div class="pomodoro-app-settings-wrapper">
+								<label for="pomodoro">Pomodoro</label>
+								<input type="number" id="pomodoro" placeholder="25">
+							</div>
+	
+							<div class="pomodoro-app-settings-wrapper">
+								<label for="short-break">short break</label>
+								<input type="number" id="pomodoro" placeholder="5">
+							</div>
+					
+							<div class="pomodoro-app-settings-wrapper">
+								<label for="long-break">long break</label>
+								<input type="number" id="long-break" placeholder="15">
+							</div>
+			
+						</div>
+
+						<div class="pomodoro-app-settings-info">
+							<h3 class="pomodoro-app-settings-inner-heading">font</h3>
+							<div class="pomodoro-app-settings-selector">
+								<label for="font-kumbh" class="pomodoro-app-settings-font pomodoro-app-settings-font--kumb">
+									<input id="font-kumbh" type="radio" name="font" value="kumbh" checked>
+									Aa
+								</label>
+
+								<label for="font-roboto" class="pomodoro-app-settings-font pomodoro-app-settings-font--roboto">
+									<input id="font-roboto" type="radio" name="font" value="roboto">
+									Aa
+								</label>
+
+								<label for="font-mono" class="pomodoro-app-settings-font pomodoro-app-settings-font--mono">
+									<input id="font-mono" type="radio" name="font" value="mono">
+									Aa
+								</label>
+							</div>
+						</div>
+
+						<div class="pomodoro-app-settings-info">
+							<h3 class="pomodoro-app-settings-inner-heading">color</h3>
+							<div class="pomodoro-app-settings-selector">
+								<label for="color-red" class="pomodoro-app-settings-color pomodoro-app-settings-color--red">
+									<input type="radio" id="color-red" name="color" value="red" checked>
+								</label>
+
+								<label for="color-cyan" class="pomodoro-app-settings-color pomodoro-app-settings-color--cyan">
+									<input type="radio" id="color-cyan" name="color" value="cyan">
+								</label>
+
+								<label for="color-purple" class="pomodoro-app-settings-color pomodoro-app-settings-color--purple">
+									<input type="radio" id="color-purple" name="color" value="purple">
+								</label>
+							</div>
+						</div>
+
+						<button class="pomodoro-app-submit-btn" type="submit">Apply</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="module" src="/src/main.js"></script>
 </html>
