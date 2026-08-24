@@ -30,31 +30,60 @@
 					</div>
 				</div>
 
-				<img class="pomodoro-app-settings-icon" src="src/assets/icon-settings.svg" alt="settings icon">
+				<button class="pomodoro-app-settings-icon">
+					<svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M23.8058 15.365L26.7334 17.682C26.997 17.899 27.0734 18.2771 26.8998 18.578L24.1248 23.429C23.9514 23.73 23.5906 23.849 23.2784 23.73L19.8235 22.323C19.109 22.883 18.325 23.345 17.4786 23.702L16.9583 27.412C16.9028 27.741 16.6184 28 16.2715 28H10.7215C10.3746 28 10.0901 27.741 10.0347 27.412L9.51433 23.702C8.66797 23.345 7.88405 22.8761 7.16946 22.323L3.71455 23.73C3.40236 23.856 3.04165 23.73 2.86819 23.429L0.0931375 18.578C-0.0803234 18.27 -0.00396681 17.892 0.259639 17.682L3.18727 15.365C3.13179 14.917 3.09017 14.462 3.09017 14C3.09017 13.538 3.13179 13.083 3.18727 12.635L0.259639 10.318C-0.00396681 10.101 -0.0803234 9.72302 0.0931375 9.42199L2.86825 4.57099C3.04165 4.26996 3.40242 4.15098 3.71461 4.26996L7.16952 5.67697C7.88405 5.11699 8.66804 4.65499 9.5144 4.29799L10.0347 0.588001C10.0902 0.259022 10.3747 0 10.7215 0H16.2716C16.6184 0 16.9028 0.259022 16.9653 0.588001L17.4857 4.29799C18.332 4.65499 19.1159 5.12394 19.8305 5.67697L23.2855 4.26996C23.5976 4.14396 23.9584 4.26996 24.1318 4.57099L26.9069 9.42199C27.0803 9.72997 27.004 10.108 26.7404 10.318L23.8058 12.635C23.8612 13.083 23.9029 13.538 23.9029 14C23.9029 14.462 23.8612 14.917 23.8058 15.365ZM8.6402 14C8.6402 16.709 10.8117 18.9 13.4965 18.9C16.1814 18.9 18.3528 16.7091 18.3528 14.0001C18.3528 11.2911 16.1814 9.10004 13.4965 9.10004C10.8117 9.10004 8.6402 11.291 8.6402 14Z" fill="#D7E0FF"/>
+					</svg>			
+				</button>
+
 
 				<div class="pomodoro-app-settings">
 					<div class="pomodoro-app-info">
 						<h3 class="pomodoro-app-info-heading">settings</h3>
-						<img class="pomodoro-app-settings-close" src="src/assets/icon-close-settings.svg" alt="icon to close ">
+
+						<button class="pomodoro-app-settings-close">
+							<svg width="13" height="13" viewBox="0 0 13 13" fill="#979797" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7279 1.41421L11.3137 0L6.36396 4.94975L1.41421 0L0 1.41421L4.94975 6.36396L0 11.3137L1.41421 12.7279L6.36396 7.77817L11.3137 12.7279L12.7279 11.3137L7.77817 6.36396L12.7279 1.41421Z" fill="inherit"/>
+							</svg>			
+						</button>
 					</div>
 
 					<div class="pomodoro-app-settings-container">
-						<h3 class="pomodoro-app-settings-inner-heading">TIME (MINUTES)</h3>
+						<h3 class="pomodoro-app-settings-inner-heading">time (minutes)</h3>
 	
 						<div class="pomodoro-app-settings-inner">
 							<div class="pomodoro-app-settings-wrapper">
 								<label for="pomodoro">Pomodoro</label>
-								<input type="number" id="pomodoro" placeholder="25">
+								<div class="pomodoro-app-settings-field">
+									<input type="number" id="pomodoro" placeholder="25">
+									<div class="pomodoro-app-numbers-info">
+										<button class="pomodor-app-settings-btn--plus">
+											<svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M0.554688 5.2019L6.55469 1.2019L12.5547 5.2019" stroke="#1E213F" stroke-opacity="0.25" stroke-width="2"/>
+												</svg>
+										</button>
+
+										<button class="pomodor-app-settings-btn--minus">
+											<svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M0.554688 0.832031L6.55469 4.83203L12.5547 0.832031" stroke="#1E213F" stroke-opacity="0.25" stroke-width="2"/>
+											</svg>
+										</button>
+									</div>
+								</div>
 							</div>
 	
 							<div class="pomodoro-app-settings-wrapper">
 								<label for="short-break">short break</label>
-								<input type="number" id="pomodoro" placeholder="5">
+								<div class="pomodoro-app-settings-field">
+									<input type="number" id="short-break" placeholder="5">
+								</div>
 							</div>
 					
 							<div class="pomodoro-app-settings-wrapper">
 								<label for="long-break">long break</label>
-								<input type="number" id="long-break" placeholder="15">
+								<div class="pomodoro-app-settings-field">
+									<input type="number" id="long-break" placeholder="15">
+								</div>
 							</div>
 			
 						</div>
@@ -62,17 +91,17 @@
 						<div class="pomodoro-app-settings-info">
 							<h3 class="pomodoro-app-settings-inner-heading">font</h3>
 							<div class="pomodoro-app-settings-selector">
-								<label for="font-kumbh" class="pomodoro-app-settings-font pomodoro-app-settings-font--kumb">
+								<label for="font-kumbh" class="pomodoro-app-settings-details pomodoro-app-settings-font  pomodoro-app-settings-font--kumb">
 									<input id="font-kumbh" type="radio" name="font" value="kumbh" checked>
 									Aa
 								</label>
 
-								<label for="font-roboto" class="pomodoro-app-settings-font pomodoro-app-settings-font--roboto">
+								<label for="font-roboto" class=" pomodoro-app-settings-details pomodoro-app-settings-font pomodoro-app-settings-font--roboto">
 									<input id="font-roboto" type="radio" name="font" value="roboto">
 									Aa
 								</label>
 
-								<label for="font-mono" class="pomodoro-app-settings-font pomodoro-app-settings-font--mono">
+								<label for="font-mono" class="pomodoro-app-settings-details pomodoro-app-settings-font pomodoro-app-settings-font--mono">
 									<input id="font-mono" type="radio" name="font" value="mono">
 									Aa
 								</label>
@@ -82,21 +111,21 @@
 						<div class="pomodoro-app-settings-info">
 							<h3 class="pomodoro-app-settings-inner-heading">color</h3>
 							<div class="pomodoro-app-settings-selector">
-								<label for="color-red" class="pomodoro-app-settings-color pomodoro-app-settings-color--red">
+								<label for="color-red" class="pomodoro-app-settings-details pomodoro-app-settings-color pomodoro-app-settings-color--red">
 									<input type="radio" id="color-red" name="color" value="red" checked>
 								</label>
 
-								<label for="color-cyan" class="pomodoro-app-settings-color pomodoro-app-settings-color--cyan">
+								<label for="color-cyan" class="pomodoro-app-settings-details pomodoro-app-settings-color pomodoro-app-settings-color--cyan">
 									<input type="radio" id="color-cyan" name="color" value="cyan">
 								</label>
 
-								<label for="color-purple" class="pomodoro-app-settings-color pomodoro-app-settings-color--purple">
+								<label for="color-purple" class="pomodoro-app-settings-details pomodoro-app-settings-color pomodoro-app-settings-color--purple">
 									<input type="radio" id="color-purple" name="color" value="purple">
 								</label>
 							</div>
 						</div>
 
-						<button class="pomodoro-app-submit-btn" type="submit">Apply</button>
+						<input type="button" class="pomodoro-app-submit-btn" value="Apply" type="submit">
 					</div>
 				</div>
 			</div>
