@@ -15,19 +15,49 @@ const colorRadioBtnsEls = document.querySelectorAll('.pomodoro-app-settings-colo
 const pomodoroAppTime = document.querySelector(".pomodoro-app-time");
 const submitBtnEl = document.querySelector(".pomodoro-app-submit-btn") 
 const pomodoroAppControls = document.querySelector(".pomodoro-app-controls")
-console.log(pomodoroAppControls)
+const progressBarEl = document.querySelector(".progress-ring__circle");
 
-fontRadioBtnsEls[0].checked = true
+fontRadioBtnsEls[0].checked = true;
 let hasThisFont = "kumbh"
 let hasThisColor = "red";
 let hasThisTime;
 let timerId
+let totalTime;
+let overlay;
+let numberInputElValue;
 
 pomodoroAppCta.classList.add("ff-kumbh")
 pomodoroAppCtaBtns[0].classList.add("bg-red")
 pomodoroAppWrapper.classList.add("progress-bar-red")
 pomodoroAppWrapper.classList.add("ff-kumbh")
 pomodoroAppControls.classList.add("color-red")
+
+function closeModal() {
+  settingsModalEl.classList.remove("active");
+  pomodoroAppEl.classList.remove("overlay");
+}
+
+document.addEventListener('click', function(e) {
+  if(e.target.classList.contains('overlay')) {
+    closeModal();
+  }
+})
+
+pomodoroAppCtaBtns.forEach((item,index) => {
+  hasThisTime =  numberInputsEls[0].value
+  hasThisTime = hasThisTime * 60;
+  formattext();
+
+  item.addEventListener('click', function(){
+    clearInterval(timerId)
+    pomodoroAppControls.innerHTML = "Start";
+    hasThisTime =  numberInputsEls[index].value
+    hasThisTime = hasThisTime * 60;
+    totalTime = hasThisTime;
+    formattext();   
+    progressBarEl.style.strokeDashoffset =  0; 
+  })
+})
 
 incrementBtnEls.forEach((incrementBtnEl, incrementBtnElIndex) => {
   incrementBtnEl.addEventListener("click", function () {
@@ -45,7 +75,7 @@ decrementBtnEls.forEach((decrementBtnEl, decrementBtnElIndex) => {
 
 openSettingsModalBtnEl.addEventListener("click", function () {
   settingsModalEl.classList.toggle("active");
-  pomodoroAppEl.classList.toggle("overlay")
+  pomodoroAppEl.classList.toggle("overlay");
 });
 
 closeSettingsModalBtnEl.addEventListener("click", function() {
@@ -83,7 +113,7 @@ colorRadioBtnsEls.forEach((colorBtn) => {
   })
 })
 
-pomodoroAppCtaBtns.forEach((btnEl,index) => {
+pomodoroAppCtaBtns.forEach((btnEl) => {
   btnEl.addEventListener('click', function(){
     pomodoroAppCtaBtns.forEach((item) => {
       item.classList.remove('active')
@@ -92,7 +122,6 @@ pomodoroAppCtaBtns.forEach((btnEl,index) => {
 
     btnEl.classList.add('active')
     btnEl.classList.add(`bg-${hasThisColor}`)
-    let activeValue = numberInputsEls[index];
   })
 })
 
@@ -102,35 +131,58 @@ submitBtnEl.addEventListener('click', function(){
   clearInterval(timerId)
 
   pomodoroAppCtaBtns.forEach((item,index) =>  {
-    let numberInputElValue = numberInputsEls[index].value;
+    numberInputElValue = numberInputsEls[index].value;
+
     if(item.classList.contains('active')) {
-      hasThisTime =  Number(numberInputElValue)
+      hasThisTime =  numberInputElValue;
       hasThisTime = hasThisTime * 60;
-      pomodoroAppControls.innerHTML = "Pause"
+      totalTime = hasThisTime;
+      pomodoroAppControls.innerHTML = "Pause";
       timerId = setInterval(startCountDownTick, 1000);
-      formattext()
+      formattext();
     }
   })
 })
 
 function formattext() {
-  const reminderValue = Math.floor(hasThisTime / 60); 
-  const divisionValue = hasThisTime % 60;
-  let divisionValuePadded = divisionValue.toString().padStart(2,'0')
-  let reminderValuePadded = reminderValue.toString().padStart(2,'0')
-  pomodoroAppTime.textContent = `${reminderValuePadded}:${divisionValuePadded}`;
+  let minutes = Math.floor(hasThisTime / 60);  
+  let seconds = hasThisTime % 60;        
+  minutes = minutes.toString().padStart(2,'0');
+  seconds = seconds.toString().padStart(2,'0');
+  pomodoroAppTime.textContent = `${minutes}:${seconds}`;
 }
 
+function progressbar() {
+  let circumference = 2 * Math.PI * 56; // 351.68
+  progressBarEl.style.strokeDasharray = circumference;
+  let progressRatio = hasThisTime / totalTime;
+  progressRatio = progressRatio * circumference //for visible line 
+  progressRatio = circumference - progressRatio   //to hide the rest of cicrcle except for visle line
+  progressBarEl.style.strokeDashoffset =  progressRatio;
+}   
+
 function startCountDownTick() {
-  if(hasThisTime === 0) {
+  if(hasThisTime === 0 ) {
     clearInterval(timerId);
-    pomodoroAppControls.innerHTML = "Start";
+    pomodoroAppCtaBtns.forEach((item,index) =>  {
+      numberInputElValue = numberInputsEls[index].value;
+
+      if(item.classList.contains('active')) {
+        hasThisTime =  numberInputElValue;
+        hasThisTime = hasThisTime * 60;
+        totalTime = hasThisTime;
+        formattext();
+        progressBarEl.style.strokeDashoffset =  0;
+        pomodoroAppControls.innerHTML = "Start"
+      }
+    })
+
   } else {
     hasThisTime--
     formattext()
+    progressbar()
   }
 }
-
 pomodoroAppControls.addEventListener('click', function(){
   if(pomodoroAppControls.innerHTML === "Pause") {
     pomodoroAppControls.innerHTML = "Start"
