@@ -16,6 +16,8 @@ const pomodoroAppTime = document.querySelector(".pomodoro-app-time");
 const submitBtnEl = document.querySelector(".pomodoro-app-submit-btn") 
 const pomodoroAppControls = document.querySelector(".pomodoro-app-controls")
 const progressBarEl = document.querySelector(".progress-ring__circle");
+const titleTag = document.querySelector("title");
+const audio = new Audio('pomodoro-timer-end.wav');
 
 fontRadioBtnsEls[0].checked = true;
 let hasThisFont = "kumbh"
@@ -150,6 +152,7 @@ function formattext() {
   minutes = minutes.toString().padStart(2,'0');
   seconds = seconds.toString().padStart(2,'0');
   pomodoroAppTime.textContent = `${minutes}:${seconds}`;
+  titleTag.textContent = `${minutes}:${seconds}`;
 }
 
 function progressbar() {
@@ -177,12 +180,15 @@ function startCountDownTick() {
       }
     })
 
+    audio.play()
+
   } else {
     hasThisTime--
     formattext()
     progressbar()
   }
 }
+
 pomodoroAppControls.addEventListener('click', function(){
   if(pomodoroAppControls.innerHTML === "Pause") {
     pomodoroAppControls.innerHTML = "Start"
